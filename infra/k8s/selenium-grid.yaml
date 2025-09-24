@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selenium-grid
+  namespace: autoqa
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: sgrid } }
+  template:
+    metadata: { labels: { app: sgrid } }
+    spec:
+      containers:
+        - name: selenium-hub
+          image: selenium/standalone-chrome:4.23.0
+          ports: [{containerPort: 4444}]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: selenium-grid
+  namespace: autoqa
+spec:
+  selector: { app: sgrid }
+  ports:
+    - port: 4444
+      targetPort: 4444

@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: autoqa-orchestrator
+  namespace: autoqa
+spec:
+  replicas: 1
+  selector:
+    matchLabels: { app: autoqa-orch }
+  template:
+    metadata:
+      labels: { app: autoqa-orch }
+    spec:
+      containers:
+        - name: orchestrator
+          image: local/autoqa/orchestrator:latest
+          imagePullPolicy: IfNotPresent
+          ports: [{containerPort: 8080}]

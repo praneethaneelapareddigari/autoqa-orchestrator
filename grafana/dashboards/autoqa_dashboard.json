@@ -1,0 +1,25 @@
+{
+  "title": "AutoQA \u2013 Release Readiness",
+  "panels": [
+    {
+      "type": "graph",
+      "title": "Pass/Fail Trend",
+      "targets": [
+        {
+          "expr": "sum(rate(autoqa_tests_scheduled_total[5m]))"
+        }
+      ]
+    },
+    {
+      "type": "stat",
+      "title": "Avg Flakiness",
+      "targets": [
+        {
+          "expr": "autoqa_flakiness_score"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": 39,
+  "version": 1
+}
