@@ -6,7 +6,7 @@ AutoQA Orchestrator is a Kubernetes‑native QA platform that runs Cypress & Sel
 
 ---
 
-## ✨ Capabilities
+##  Capabilities
 - **Kubernetes-native pipelines**: parallel smoke/regression/mobile suites; scale to 50K+ concurrent sessions (conceptual horizontal pod autoscaling).
 - **Self-healing test scripts**: locator fallbacks + retry heuristics + historical flakiness scoring → **-65% regression time**, **98% coverage**.
 - **CI/CD integration**: Jenkinsfile triggers, Dockerized runners, JUnit/Allure-style outputs, **+40%** release stability.
@@ -16,7 +16,7 @@ AutoQA Orchestrator is a Kubernetes‑native QA platform that runs Cypress & Sel
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```
 autoqa-orchestrator/
@@ -68,7 +68,7 @@ autoqa-orchestrator/
 
 ---
 
-## 🧭 Architecture
+##  Architecture
 
 1. **Jenkins** builds Docker images and deploys to **Kubernetes**.
 2. **AutoQA Orchestrator** exposes `/schedule` to plan runs using historical results + change metadata.
@@ -79,7 +79,7 @@ autoqa-orchestrator/
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 > Prerequisites: Docker, kubectl, kind, Node 18+, Python 3.10+
 
@@ -103,7 +103,7 @@ Jenkins will pick the **Jenkinsfile** and:
 
 ---
 
-## 🧪 Tests
+##  Tests
 
 ### Cypress
 - Location: `cypress/e2e/*.cy.js`
@@ -128,7 +128,7 @@ pytest -q --maxfail=1
 
 ---
 
-## 🧠 Self‑Healing & Prioritization
+##  Self‑Healing & Prioritization
 
 - **Locator healing** tries multiple selectors per element (CSS → data‑test → XPath) and records success.
 - **Prioritizer** scores tests by `recent_failures`, `flakiness`, and `code_diff_risk`, then schedules high‑risk first.
@@ -136,7 +136,7 @@ pytest -q --maxfail=1
 
 ---
 
-## 📊 Observability
+##  Observability
 
 - `grafana/dashboards/autoqa_dashboard.json` provides build health, pass/fail, flakiness, MTTR widgets.
 - Orchestrator exports simple Prometheus metrics at `/metrics`.
@@ -145,7 +145,7 @@ pytest -q --maxfail=1
 
 ---
 
-## 🧩 Kubernetes
+##  Kubernetes
 
 Apply manifests under `infra/k8s`:
 ```bash
@@ -161,13 +161,13 @@ kubectl apply -f infra/k8s/grafana-deploy.yaml
 
 ---
 
-## 🔗 CI/CD – Jenkins
+##  CI/CD – Jenkins
 - Declarative pipeline: parallel Cypress/Selenium stages, JUnit archiving, Docker buildx, `kubectl rollout status`.
 - Trigger on `main` push or PR; nightly regression via cron.
 
 ---
 
-## ✅ Deliverables
+##  Deliverables
 - Complete code for orchestrator + tests
 - Dockerfiles for all components
 - K8s manifests
@@ -177,6 +177,6 @@ kubectl apply -f infra/k8s/grafana-deploy.yaml
 
 ---
 
-## ⚠️ Notes
+##  Notes
 - This is a turnkey demo; tune resource requests/limits, security (RBAC, secrets), and HPA for real environments.
 - Replace image names with your registry.
